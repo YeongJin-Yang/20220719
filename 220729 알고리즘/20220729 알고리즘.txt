@@ -1,0 +1,975 @@
+//---------------------금광 캐기-----------------------------------
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+string str = "ABCATTTABCABC";
+
+int main() {
+
+	int A = 0;
+	int cnt = 0;
+	while (1) {
+		A = str.find("ABC", A);
+		//int A = findABC("ABC", strs);
+		if (A == -1) break;
+	
+		cout << A << " ";
+		
+		A++;
+	}
+
+	return 0;
+}
+
+//------------------------ 유효성검사(valid check)-----------------------------------
+
+1. 대문자, 숫자로만 구성  
+
+  isupper를 사용 
+
+2. 8글자 미만
+ 
+string str1 = " ";
+
+
+cout << str1.length() << endl;
+
+3. 첫 글자는 숫자금지
+
+#include <isostream>
+#include <sting>
+
+
+leng
+
+
+
+----------------------------------------------------------------------------------
+
+1. insert 함수 
+str.insert(3, "AAA");
+
+cout << str << endl;
+
+2. erase 함수
+str.erase(2, 5); // 2번에서 5글자를 지워라
+
+cout << str;
+
+return 0; 
+
+
+---------------------------------------------------------------------------------
+
+//------------------------ 유효성검사(valid check)--<-함수로 뺀다 (1)-----------------------------
+
+1. 대문자, 숫자로만 구성
+2. 8글자 미만
+3. 첫 글자는 숫자금지
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int isValid(string id) {
+	//1. 대문자, 숫자로만 구성
+	for (int i = 0; i < id.size(); i++) {
+		char ch = id[i];
+		if (ch >= 'A' && ch <= 'Z') continue;
+		if (ch >= '0' && ch <= '9') continue;    // string 값이니까 숫자에 '' 써야 오류가 나지 않음 
+		return 0;
+	}
+
+	//2. 8글자 미만
+	if (id.size() < 8) return 0;
+
+	//3. 첫글자 숫자 금자
+	if (id[0] >= '0' && id[0] <= '9') return 0;
+
+
+	return 1;
+}
+
+int main() {
+
+	string id = "BBQKFC1";
+
+	if (isValid(id)) cout << "yes";
+	else cout << "no";
+
+	return 0;
+}
+
+//------------------------ 유효성검사(valid check)--<-이메일 (2)-----------------------------
+1. 아래와 같은 형태
+2. 특수문자 금지
+
+#include <isotream>
+#include <string>
+using namespace std;
+
+int isValid(string id) {
+	// 형태 구성
+	//1. 대소문자 숫자로 구성되어있는지 확인
+	for (int i = 0; i < id.size(); i++) {
+		char ch = id[i];
+		if (ch >= 'a' && ch < = 'z') continue;
+		if (ch >= 'A' && Ch < = 'Z') continue;
+		if (ch >= '0' && ch < = '9') continue;
+		if (ch == '@' && ch == '.') continue;
+		return 0;
+	}
+
+
+	//2. 특수문자 금지 ,대소문자 숫자허용
+	
+
+	
+	}
+	
+
+}
+
+int main() {
+
+	string id = "ABC@BBA.com";
+
+	if (isValid(id)) cout << "yes";
+	else cout << "no";
+
+	return 0;
+}
+
+
+===================================================================
+
+//---------------------------배열 위,아래 값 바꾸기-----------------------------------------
+
+/*#include <iostream>
+
+#include <vector>
+using namespace std;
+
+vector<vector<int>> bbq(vector<vector<int>> arr) {
+	swap(arr[0], arr[1]);
+
+	return arr;
+}
+
+int main() {
+
+	vector<vector<int>> m = {
+		{1, 5, 4},
+		{1, 9, 9}
+	};
+
+	vector<vector<int>> z = bbq(m);
+
+	for (int y = 0; y < z.size(); y++) {
+		for (int x = 0; x < z[y].size(); x++) {
+			cout << z[y][x];
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
+*/
+
+//---------------------------벡터에 벡터 ---------------------------------------------------
+
+/*#include <iostream>
+
+#include <vector>
+using namespace std;
+
+vector<vector<int>> alist(6);
+int main() {
+
+	alist[1] = { 3, 4, 5 };
+	alist[3] = { 4 };
+	alist[4] = { 2, 5 };
+	alist[5] = { 2 };
+
+	int n;
+	cin >> n;
+
+	for (int i = 0; i < alist[n].size(); i++) {
+		cout << alist[n][i];
+	}
+	return 0;
+}
+*/
+
+//------------------ 스택(통속에 있는거)-------------------------------------------------------
+
+/*#include <iostream>
+
+#include <stack>
+using namespace std;
+
+int main() {
+	stack<int> st;
+
+	st.push(2);
+	st.push(3);
+	st.push(6);
+
+	cout << st.top(); //6
+	st.pop(); //삭제 맨위 삭제
+	cout << st.top(); //3
+
+		
+	return 0;
+}
+*/
+//------------------ 큐(큐는 식당에서 줄 세우기 느낌 )-------------------------------------------------------
+
+/*#include <iostream>
+
+#include <queue>
+using namespace std;
+
+int main() {
+	//stack<int> st;
+	queue<int> st;
+
+	st.push(2);
+	st.push(3);
+	st.push(6);
+
+	cout << st.front();  // 맨앞값 읽기 : 2
+	st.pop(); //맨맢값 삭제 : 2제거
+	cout << st.front();// // 맨앞값 읽기 : 3
+
+	cout << st.size();
+
+	return 0;
+}
+
+*/
+
+
+
+//---------------------금광 캐기-----------------------------------
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+
+string str = "ABCATTTABCABC";
+
+int main() {
+
+	int A = 0;
+	int cnt = 0;
+	while (1) {
+		A = str.find("ABC", A);
+		//int A = findABC("ABC", strs);
+		if (A == -1) break;
+	
+		cout << A << " ";
+		
+		A++;
+	}
+
+	return 0;
+}
+*/
+/*#include <iostream>
+#include <string>
+using namespace std;
+
+string bbq = "ABC#KFC"
+
+int main() {
+
+	int A = 0;
+	int cnt = 0;
+
+	
+
+	A.erase(4,3);
+	A.insert(3, "BBQ");
+
+	cout << str;
+
+	return 0;
+
+
+
+return 0;
+}
+*/
+//------------------------------------------------------------------------------------  GOLD찾기 응용 버전 
+
+#include <iostream>
+#include <string>
+using namespace std;
+string bbq = "ABC##KFC##BTS";
+
+void replace(string before, string after) {   // before에는 KFC를 after에는 MC값을 받음
+
+	int a = bbq.find(before);                 // bbq에서 KFC가 존재하는 위치를 찾기
+
+	bbq.erase(a, before.size());			  // bbq에서 KFC 제거
+	bbq.insert(a, after);					  // bbq에서 KFC 제거한 자리에 MC를 추가 
+}
+
+int main() {
+
+
+	//KFC 라는단어를 MC 변경 (KFC는 단 하나만 존재)
+	cout << bbq << '\n';
+	replace("KFC", "MC");
+	cout << bbq << '\n';
+	return 0;
+}
+
+//------------------------------------------------------------------------------------------ GOLD찾기 응용 버전(2)
+
+#include <iostream>
+#include <string>
+using namespace std;
+string bbq = "ABC##KFC##BTS##KFC####KFC####KFC";
+
+void replace(string before, string after) {
+
+	int a = 0;
+	while (1) {
+		a = bbq.find(before, a);
+		if (a == -1) break;
+
+		bbq.erase(a, before.size());
+		bbq.insert(a, after);
+
+		a++;
+	}
+}
+
+int main() {
+
+	//KFC 라는단어를 MC 변경 (KFC는 여러개가 존재할 수 있다)
+
+	cout << bbq << '\n';
+	replace("KFC", "MC");
+	cout << bbq << '\n';
+	return 0;
+}
+
+//-------------------------------------------------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+string bbq = "ABC|BBQ|KFC|OKCASH";
+
+vector<string> split(string gijun) {
+	vector<string> list;
+
+	int a = 0;
+	int b = 0;
+	string str = bbq + gijun;
+
+	while (1) {
+		b = str.find(gijun, a);
+		if (b == -1) break;
+
+		//뜯자
+		int size = b - a;
+		string temp = str.substr(a, size);
+		list.push_back(temp);
+
+		a = b + 1;
+	}
+
+	return list;
+}
+
+int main() {
+
+	vector<string> list = split("|");
+
+	return 0;
+}
+
+
+//-------------------------------------------------------------------------------------------------
+
+
+//--------------------------------------------------------------------------------------
+
+/*#include <iostream>
+#include <string>
+using namespace std;
+string bbq = "ILOVEKFCANDMC!!";
+
+void replace(string before, string after) {
+
+	int a = 0;
+	while (1) {
+		a = bbq.find(before, a);
+		if (a == -1) break;
+
+		bbq.erase(a, before.size());
+		bbq.insert(a, after);
+
+		a++;
+	}
+
+	int b = 0;
+	while (1) {
+		b = bbq.find(before, b);
+		if (a == -1) break;
+
+		bbq.erase(b, before.size());
+		bbq.insert(b, after);
+
+		b++;
+	}
+
+	int c = 0;
+	while (1) {
+		b = bbq.find(before, c);
+		if (a == -1) break;
+
+		bbq.erase(c, before.size());
+		bbq.insert(c, after);
+
+		c++;
+	}
+
+	int d = 0;
+	while (1) {
+		b = bbq.find(before, d);
+		if (a == -1) break;
+
+		bbq.erase(d, before.size());
+		bbq.insert(d, after);
+
+		d++;
+	}
+	
+}
+
+int main() {
+
+	//KFC 라는단어를 MC 변경 (KFC는 여러개가 존재할 수 있다)
+
+	cout << bbq << '\n';
+	replace("BBQ", "C");
+	cout << bbq << '\n';
+
+	cout << bbq << '\n';
+	replace("BBQ", "C");
+	cout << bbq << '\n';
+
+	cout << bbq << '\n';
+	replace("MACBOOK", "C");
+	cout << bbq << '\n';
+
+	cout << bbq << '\n';
+	replace("SHOCK", "C");
+	cout << bbq << '\n';
+
+	cout << bbq << '\n';
+	replace("NONY", "C");
+	cout << bbq << '\n';
+
+	return 0;
+}*/
+
+
+
+
+
+
+///--------------------------------------------------------
+
+[코테 문제 풀이법]
+
+
+1. 존재여부 판단  <-------------- 맨뒤에 수가 아니면 뒤에 0 붙여주기       include
+2. 수의 index 찾기
+3. front = cow
+   end = 119
+4. 문자열 만들기
+  4 + 1 
+
+//문제문제문제문제문제문제문제문제문제문제문제문제------
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+vector<string> regs;
+string target;
+
+int isInclude(string word) {
+    for (int i = 0; i < regs.size(); i++) {
+        if (regs[i] == word) return 1;
+    }
+    return 0;
+}
+
+string solution(vector<string> registered_list, string new_id) {
+
+    regs = registered_list;
+    target = new_id;
+    
+    while (1) {
+        //1번. 존재하지않으면 끝
+        int ret = isInclude(target);
+        if (ret == 0) {
+            return target;
+        }
+
+        //2. 수 index찾기
+        if (!(target[target.size() - 1] >= '0' && target[target.size() - 1] <= '9')) {
+            target += '0';
+        }
+
+        int a = 0;
+        for (int i = 0; i < target.size(); i++) {
+            if (target[i] >= '0' && target[i] <= '9') {
+                a = i;
+                break;
+            }
+        }
+
+        //3. 앞뒤 잘라
+        string front = target.substr(0, a);
+        string back = target.substr(a);
+
+        //4. 문자열 만들자
+        int num = stoi(back) + 1;
+        target = front + to_string(num);
+    }
+
+    return 0;
+}
+
+int main()
+{
+    vector<vector<string>> registered_list = {
+        { "cow", "cow1", "cow2", "cow3", "cow4", "cow9", "cow8", "cow7", "cow6", "cow5"},
+        { "card", "ace13", "ace16", "banker", "ace17", "ace14" },
+        { "bird99", "bird98", "bird101", "gotoxy"},
+        { "apple1", "orange", "banana3"},
+        {"bt1008","bt1003","bt1004","bt1005","bt1006","bt1007","bt1002"},
+        { "bird99", "bird98", "bird101", "gotoxy"},
+        { "aa9999"},
+    };
+
+    vector<string> result = {
+        "cow10","ace15",  "bird100", "apple", "bt1009", "gotoxy1", "aa10000"
+    };
+
+    vector<string> newID = {
+        "cow", "ace15", "bird98", "apple", "bt1002", "gotoxy", "aa9999"
+    };
+
+    for (int i = 0; i < registered_list.size(); i++) {
+        string yours = solution(registered_list[i], newID[i]);
+
+        if (yours == result[i]) cout << "GOOD!!\n";
+        else cout << "오답입니다\n";
+    }
+
+    return 0;
+}
+
+/---------------------------------------------------------------------------
+
+/*
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+string bbq = "ABC|BBQ|KFC|OKCASH";
+
+vector<string> split(string gijun) {
+	vector<string> list;
+
+	int a = 0;
+	int b = 0;
+	string str = bbq + gijun;
+
+	while (1) {
+		b = str.find(gijun, a);
+		if (b == -1) break;
+
+		//뜯자
+		int size = b - a;
+		string temp = str.substr(a, size);
+		list.push_back(temp);
+
+		a = b + 1;
+	}
+
+	return list;
+}
+
+int main() {
+
+	vector<string> list = split("|");
+
+	cout << list < endl;
+	
+	return 0;
+}
+*/
+
+//-----------------------------------------------------------------------------------------------------
+/*
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+
+
+
+
+string solution(vector<string> registered_list, string new_id) {
+	string answer = "";
+	return answer;
+}
+
+int main()
+{
+	vector<vector<string>> registered_list = {
+		{ "card", "ace13", "ace16", "banker", "ace17", "ace14" },
+		{ "cow", "cow1", "cow2", "cow3", "cow4", "cow9", "cow8", "cow7", "cow6", "cow5"},
+		{ "bird99", "bird98", "bird101", "gotoxy"},
+		{ "apple1", "orange", "banana3"}
+	};
+
+	vector<string> result = {
+		"ace15", "cow10", "bird100", "apple"
+	};
+
+	vector<string> newID = {
+		"ace15", "cow", "bird98", "apple"
+	};
+
+	for (int i = 0; i < registered_list.size(); i++) {
+		string yours = solution(registered_list[i], newID[i]);
+
+		if (yours == result[i]) cout << "GOOD!!\n";
+		else cout << "오답입니다\n";
+	}
+
+	return 0;
+}
+*/
+//------------------------------------------------------------------------------
+/*
+#include <iostream>
+#include <string>
+using namespace std;
+
+string vect[5];
+
+void input()
+{
+	for (int y = 0; y < 5; y++) {  
+		cin >> vect[y];
+	}
+}
+
+int getFind(string str)
+{
+	int a = -1;
+
+	int cnt = 0;
+	while (1) {
+		a = str.find("MCD", a + 1);
+		if (a == -1) break;
+		cnt++;
+	}
+
+	return cnt;
+}
+
+int main()
+{
+	input();
+
+	int cnt = 0;
+	for (int i = 0; i < 5; i++) {
+		cnt += getFind(vect[i]);
+	}
+
+	cout << cnt;
+
+	return 0;
+}
+*/
+
+
+
+
+//-------------------------------------------------------------------------------------
+
+/*
+#include <iostream>
+using namespace std;
+
+int main()
+
+{
+	alist[1] = { 3, 4, 5 };
+	alist[3] = { 4 };
+	alist[4] = { 2, 5 };
+	alist[5] = { 2 };
+
+	int n;
+	cin >> n;
+
+	for (int i = 0; i < alist[n].size(); i++) {
+		cout << alist[n][i];
+	}
+
+
+
+	return 0;
+}
+*/
+//-------------------------------------------------------
+
+//------------------------DFS------------------------------
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+vecto r<vector<int>> alist(6);
+
+vector<string>value(6);
+
+int main() {
+
+	alist[1] = { 2,5 };
+	alist[2] = { 3 };
+	alist[3] = { 4,5 };
+	alist[5] = { 4 };
+
+	value = { "","BTS",	"KFC","MOMS","MC","BBQ"};
+
+	int n;
+	cin >> n;
+
+	for (int i = 0; i < alist[n].size(); i++) {
+		cout << value[alist[n][i]] << " ";
+	}
+	return 0;
+}
+
+
+// -------------------DFS -다음 갈 수 있는 길 출력------------------
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+vector<vector<int>> alist(7);
+
+void run(int now) {
+
+	cout << now << " ";
+
+	for (int i = 0; i < alist[now].size(); i++) {
+		int next = alist[now][i];
+		run(next);
+	}
+
+}
+int main()
+{
+	alist[1] = { 2, 3 };
+	alist[2] = { 4, 5 };
+	alist[3] = { 6 };
+
+	run(1);
+
+	return 0;
+}
+
+
+//----------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<vector<int>> alist(7);
+
+void run(int now) {
+
+	cout << now << "";
+
+	for (int i = 0; i < alist[now].size(); i++) {
+		int next = alist[now][i];
+		run(next);
+	}
+}
+int main()
+{
+	alist[1] = { 2,3,4 };
+	alist[3] = { 5,6 };
+
+	run(1);
+
+	return 0;
+}
+
+
+//-------------------------------------------------------------------
+
+//----------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<vector<int>> alist(7);
+
+void run(int now) {
+
+	cout << now << "";
+
+	for (int i = 0; i < alist[now].size(); i++) {
+		int next = alist[now][i];
+		run(next);
+	}
+}
+int main()
+{
+	alist[1] = { 2,3,4 };
+	alist[3] = { 5,6 };
+
+	run(1);
+
+	return 0;
+}
+
+
+//---------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+vector<vector<int>> alist(5);
+int used[5];  // alist가 5니까 used도 5
+
+void run(int now) {
+	cout << now;
+	for (int i = 0; i < alist[now].size(); i++) {
+		int next = alist[now][i];
+
+		if (used[next] == 1) continue;
+		used[next] = 1;
+		run(next);
+	}
+
+}
+
+int main()
+{
+	alist[1] = { 2 };
+	alist[2] = { 3, 4 };
+	alist[3] = { 4 };
+	alist[4] = { 1 };
+
+	used[1] = 1;
+	run(1);
+
+	return 0;
+}
+
+//------------------DFS를 통해서 중복된 경로 제외하고 구하기 (재귀)----------------------------------------
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+vector<vector<int>> alist(10);
+int used[5];
+
+void run(int now) {
+	cout << now;
+	for (int i = 0; i < alist[now].size(); i++) {
+		int next = alist[now][i];
+
+		if (used[next] == 1) continue;
+		used[next] = 1;
+		run(next);
+	}
+
+}
+
+int main()
+{
+	alist[1] = { 2,4 };
+	alist[2] = { 5 };
+	alist[3] = { 1 };
+	alist[4] = { 3 };
+	alist[5] = { 1,3 };
+
+	used[1] = 1;	
+	
+	run(1);	
+
+	return 0;
+	
+}
+결과값 : 1-2-5-2-1-4-3( 중복된 경로 표시 x)
+
+//-------------------------------------------------------------------------------------
+탐색
+
+1. 모든 노드를 1회씩 탐색 (A에서 특정지점까지 갈 수 있냐?)
+used[next] = 1
+run(next)
+
+
+2. 모든 경로를 탐색  (A에서 특정지점까지 가는 경로의 개수?)
+used[next] = 1
+run(next)
+used[next] = 0
+
+C언어 typedef를 사용 
+
+//---------------------------------------
+
+<코테에 나오는 자료구조 & 알고리즘>
+
+스택/ 큐
+트리 /그래프 (DFS, BFS)
+힙(Lib)
+Hash(Lib)
+
+------------------------------------------
+Binary Search
+Backtracking (DFS)
+Flood Fill (BFS)
+Two Point
+Prefix
+Union-Find (+MST)
+Dijkstra
+Greedy
+DP <---------------- 가성비 떨어짐 (버리는 것도 전략)
+
+-----------------------------------------//
