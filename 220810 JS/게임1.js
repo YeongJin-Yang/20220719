@@ -1,0 +1,1 @@
+const btnClick = (n) => alert(`버튼 ${n} 클릭`);  
