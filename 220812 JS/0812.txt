@@ -1,0 +1,68 @@
+<SQL>
+
+crud create
+    CREATE - DB, TABLE, USER ...
+    INSERT - TABLE에서, ROW 추가할 때
+read
+    SELECT - 데이터 읽을 때
+update
+    UPDATE
+delete
+    DELETE - row 삭제
+    DROP - table, DB, USER
+
+
+//-------------------------------------------------------------------
+
+SELECT (필드 : 내가 컬럼으로 사용할 것)  FROM (테이블)  LIMIT (조건);
+
+SELECT는 원래 존재하는 데이터를 손상시키지 않음 (가상의 테이블[자료]를 만든다고 생각하기)
+
+
+GROUP BY(묶다) __ 묶을 기준 
+ORDER BY CountryCode; ( CountryCode 이름 순으로 정렬)
+
+
+
+<TOP 5개의 국가코드, 인구수 출력 연습>
+select country code, sum(population) as 인구수 from city
+group by country code;
+order by sum(population)
+DESC LIMIT 5;
+
+
+<                           >
+
+mysql <select year (from date) from dept_emp LIMIT 100;
+
+mysql< SELECT year(from_date) FROM dept_emp LIMIT 10;
+
+
+
+SQL- 백엔드 개발자가 사용
+SQL에서 LEFT JOIN(왼쪽에서 오른쪽으로 진행)이 진짜아아 중요!!!!
+
+
+<                            >
+
+mysql>SELECT employees.first_name, employees.last_name, departments.dept_name
+-> FROM employees
+-> LEFT JOIN dept_emp 
+-> ON employees. emp_no = dept_emp.emp_no (브릿지 테이블 사용)
+-> LEFT JOIN departments
+-> ON dept_emp.dept_no = departments.dept_no. ( 원래 있던 테이블에 새로운 테이블 덧붙이는거)
+-> limit 100;
+	
+
+
+//-------날씨프로젝트-------------------오후------------------------------------------------------------------
+
+https://picsum.photos/ : 파일 크기 입력하면 무작위 사진이 나옴
+
+js 바디 위에
+css 헤더에 
+
+
+
+localStorage : 브라우저에 있는 저장소
+const :

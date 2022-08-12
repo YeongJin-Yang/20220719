@@ -1,0 +1,39 @@
+body{
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+.main-container {
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+
+.timer{
+  font-weight: bold;
+  font-size: 10rem; 
+  /* rem 글자크기에 비례해서 글자크기 조정*/
+  }
+
+.timer-content{
+  font-weight: bold;
+  font-size : 2.5rem;
+  text-align: center;
+}
+
+.memo-input-wrapper{
+  margin: 20px;
+}
+
+.memo-title{
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.memo{
+  text-align: center;
+  font-size: 1.5rem;
+}
