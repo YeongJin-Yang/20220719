@@ -1,0 +1,137 @@
+----------------------[DP]----------------------------- 시간대비 효율이 안좋아서 맨 마지막에 하는 게 좋음
+점화식을 잘 세워야함 
+
+- Bottom up -
+밑에서부터 올라오는 방식
+
+
+  [피보나치 수열]
+#include <iostream>
+using namespace std;
+
+int main() {
+int dp[100] = {0,1};
+int k;
+cin >>k;
+
+for (int i=2; i<30; i++)
+{
+dp[i] = dp[i-1] + dp[i-2];
+}
+
+cout << dp[k]
+return 0;
+}
+
+
+- Top Down -
+반대로 맨 뒤부터 문제해결방법 접근하는 방식 
+
++메모이 제이션 필수 
+
+
+-------------------------------------------------------------------------
+
+동전 찾기는 Top Down이 쉬움
+
+============================================================
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int arr[151] = { 0 };
+	int dp[151] = { 0 };
+
+	int n;
+	cin >> n;
+
+	for (int i = 1; i <= n; i++)
+	{
+		cin >> arr[i];
+	}
+
+	//---------------------------------------------
+
+	for (int i = 1; i <= n; i++)
+	{
+		int a;
+		int b;
+
+		if (i - 2 < 0) a = -21e8; 
+		else a = dp[i - 2] + arr[i];
+
+		if (i - 7 < 0) b = -21e8;
+		else b = dp[i - 7] + arr[i];
+
+		dp[i] = max(a, b);
+	}
+
+	int maxi = -21e8;
+
+	for (int i = n; i > n - 7; i--)
+	{
+		if (i < 0) break;
+		if (dp[i] > maxi) maxi = dp[i];
+	}
+
+	cout << maxi;
+
+	return 0;
+}
+
+
+
+
+
+[개구리 점프]
+1. greedy..
+2. back tracking.. b;3 l;7
+3. dp
+
+
+=============================================
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	char name[10];
+	int bucket[200] = { 0 };
+	int x;
+
+	cin >> name;
+
+	int len;
+	for (x = 0; x < 10; x++)
+	{
+		if (name[x] == '\0')
+		{
+			len = x;
+			break;
+		}
+	}
+
+	for (x = 0; x < len; x++)
+	{
+		bucket[name[x]]++;
+	}
+
+	for (x = 0; x < 200; x++)
+	{
+		if (bucket[x] > 0)
+		{
+			cout << (char)(x) << ":" << bucket[x] << endl;
+		}
+	}
+}
+
+
+
+
+
+
+
+
