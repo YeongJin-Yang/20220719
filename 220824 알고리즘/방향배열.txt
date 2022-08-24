@@ -1,0 +1,334 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+
+char arr[4][5];
+
+for (int y = 0; y < 4; y++)
+{
+	for (int x = 0; x < 5; x++)
+	{
+		arr[y][x] = '_';
+	}
+}
+	
+int by1, bx1;
+int by2, bx2;
+cin >> by1 >> bx1;
+cin >> by2 >> bx2;
+
+int directY[8] = { 1,-1,1,1,0,-1,0,-1 };
+int directX[8] = { 1,1,-1,0,1,0,-1,-1 };
+	
+for (int i = 0; i < 8; i++)
+{
+	int nextY = by1 + directY[i];
+	int nextX = bx1 + directX[i];
+
+	if (nextY >= 0 && nextY <= 3 && nextX >= 0 && nextX <= 4)
+	{
+		arr[nextY][nextX] = '#';
+	}
+}
+
+for (int i = 0; i < 8; i++)
+{
+	int nextY = by2 + directY[i];
+	int nextX = bx2 + directX[i];
+
+	if (nextY >= 0 && nextY <= 3 && nextX >= 0 && nextX <= 4)
+	{
+		arr[nextY][nextX] = '#';
+	}
+}
+
+
+for (int y = 0; y < 4; y++)
+{
+	for (int x = 0; x < 5; x++)
+	{
+		cout << arr[y][x] << " ";
+	}
+	cout << endl;
+}
+
+	return 0;
+}
+
+//==============================================================
+
+1. for 문을 이용하여 1을 탐색한다.
+
+2. 다이렉트를 사용 
+
+
+
+=================================================================
+
+<민코딩 19.5- 안정적인 세포 판별 >
+#include <iostream>
+using namespace std;
+
+int arr[5][4];
+int sum = 0;
+
+void function(int y,int x)
+{
+	
+
+	int directY[8] = { 1,1,-1,-1,1,-1,0,0 };
+	int directX[8] = { 0,1,0,1,-1,-1,1,-1 };
+
+	for (int i = 0; i < 8; i++)
+	{
+
+		int nextY = y + directY[i];
+		int nextX = x + directX[i];
+
+		if (nextY >= 0 && nextY < 5 && nextX >= 0 && nextX < 4)
+		{
+			sum += arr[nextY][nextX];
+		}
+	}
+}
+
+
+int main()
+{
+	
+
+	for (int y = 0; y < 5; y++)
+	{
+		for (int x = 0; x < 4; x++)
+		{
+			cin >> arr[y][x];
+		}
+	}
+
+	for (int y = 0; y < 5; y++)
+	{
+		for (int x = 0; x < 4; x++)
+		{
+			if (arr[y][x] == 1)
+			{
+				// 배열 값이 1인 좌표를 출력해야함.
+				// 출력한 좌표를 by,bx로 나오고 싶음.
+				int by = y;
+				int bx = x;
+
+				function(y,x);
+			}
+		}
+	}
+
+	if (sum >= 1)
+	{
+		cout << "불안정한 상태" << endl;
+	}
+	else
+	{
+		cout << "안정된 상태" << endl;
+	}
+
+
+
+	return 0;
+}
+
+=========================================================================
+<민코딩 19.5- 핸드폰 비밀번호 순서>
+
+#include <iostream>
+//using namespace std;
+//
+//int main()
+//{
+//	int arr1[4][4];
+//	int arr2[4];
+//	int bucket[4][4] = { 0 };
+//	
+//
+//	// arr2 제작 
+//	for (int z = 0; z < 4; z++)
+//	{
+//		cin >> arr2[z];
+//	}
+//
+//	// arr1 제작 
+//	int k = 1;
+//	for (int y = 0; y < 4; y++)
+//	{
+//		for (int x = 0; x < 4; x++)
+//		{
+//			arr1[y][x] = k;
+//			k++;
+//		}
+//	}
+//
+//	// 2개의 arr값 비교해서 1,2,3,4 넣기
+//	int k2 = 1;
+//	
+//		for( int z = 0; z < 4; z++)
+//		{
+//			for (int y = 0; y < 4; y++)
+//			{
+//				for (int x = 0; x < 4; x++)
+//				{
+//					if (arr1[y][x] == arr2[z])
+//					{
+//						bucket[y][x] = k2;
+//						k2++;
+//					}
+//
+//				}
+//			}
+//		}
+//
+//
+//
+//
+//	// 배열 출력
+//	for (int y = 0; y < 4; y++)
+//	{
+//		for (int x = 0; x < 4; x++)
+//		{
+//			cout << bucket[y][x] << " ";
+//		}
+//		cout << endl;
+//	}
+//
+//
+//
+//
+//	return 0;
+//}
+
+
+=========================================================================
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int vect[4][4] = { 0 };
+	char input[3][2];
+
+	int x, y;
+	int t;
+
+	for (t = 0; t < 3; t++)
+	{
+		cin >> input[t][0] >> input[t][1];
+	}
+
+	int line;
+	for (t = 0; t < 3; t++)
+	{
+		if (input[t][0] == 'G')
+		{
+			for (x = 0; x < 4; x++)
+			{
+				line = input[t][1] - '0';
+				vect[line][x] = 1;
+			}
+		}
+		else
+		{
+			for (y = 0; y < 4; y++)
+			{
+				line = input[t][1] - '0';
+				vect[y][line] = 1;
+			}
+		}
+	}
+
+	for (y = 0; y < 4; y++)
+	{
+		for (x = 0; x < 4; x++)
+		{
+			cout << vect[y][x] << " ";
+		}
+		cout << endl;
+	}
+
+	return 0;
+}
+
+
+======================================================
+
+#include<iostream>
+using namespace std;
+
+char name[5][4] = {
+	"ABC",
+	"AGH",
+	"HIJ",
+	"KAB",
+	"ABC",
+};
+
+int main()
+{
+	int bucket[200] = { 0 };
+	int x, y;
+
+	for (y = 0; y < 5; y++)
+	{
+		for (x = 0; x < 3; x++)
+		{
+			bucket[name[y][x]]++;
+		}
+	}
+
+	for (y = 0; y < 200; y++)
+	{
+		if (bucket[y] > 0)
+		{
+			for (x = 0; x < bucket[y]; x++)
+			{
+				cout << (char)(y);
+			}
+		}
+	}
+}
+
+=======================================================
+
+#include<iostream> 
+using namespace std;
+int main() {
+    char arr[8];
+    int bucket[150] = { 0 };
+    for (int i = 0; i < 8; i++)
+        cin >> arr[i];
+
+    for (int i = 0; i < 8; i++) {
+        bucket[arr[i]]++;
+    }
+    int idx = 0;
+    for (int i = 65; i < 150; i++)
+        if (bucket[idx] < bucket[i])
+            idx = i;
+
+    cout << char(idx);
+
+    return 0;
+}
+
+
+
+======================================================
+
+1. DAT
+
+2. Direction
+
+=======================================================
+
+
+
+
