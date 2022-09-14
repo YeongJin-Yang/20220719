@@ -1,0 +1,52 @@
+<09.14>
+
+
+1. 백엔드 프론트 엔드 파일 터미널 각각 열고
+npm i 
+
+2. backend - index.js 
+const PORT = 8081; 확인 
+
+백 -DB 연결
+프론트 - 백 연결
+프론트 - 데이터 가져올 때 : axios
+
+3. frontend - axios.js 
+const DOMAIN = "http://localhost:8081";
+
+4. backend에서 서버 연결
+nodemon index.js
+
+5. frontend에서 서버 연결
+npm run serve
+
+
+- 이미지는 백엔드에서 가지고 있어야함
+
+
+<MobaXterm>
+
+1)-mysql -u root -p 
+
+2) show databases;
+
+3) mysql> use order_system;  -> mysql> select * from menus;  
+   mysql> select * from order_system.menus;  같은 명령어
+
+4) mysql> select * from menus;
++----+------------------------+----------------------+---------------------------------+
+| id | name                   | description          | image_src                       |
++----+------------------------+----------------------+---------------------------------+
+|  1 | 카페라떼               | 라떼는..말이야       | public/image1.jpg               |
+|  2 | 카푸치노               | 언빌리 "버블"        | public/image2.jpg               |
+|  3 | 아메리카노             | 아메아메 좋아        | public/image3.jpg               |
+|  4 | 복숭아 아이스티        | 상큼한 복숭아        | public/image.11662444815123.jpg |
++----+------------------------+----------------------+---------------------------------+
+4 rows in set (0.00 sec)
+
+mysql> update menus set image_src= "public/image4.jpg" where id=4; 
+(4번째 줄 "public/image4.jpg" 으로 변경하는 구문)
+
+
+===============================================================
+[PM]
