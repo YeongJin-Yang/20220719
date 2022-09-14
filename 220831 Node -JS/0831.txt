@@ -1,0 +1,87 @@
+<08.31>
+==================AM=======================
+[puppeteer 설치]
+
+cd 폴더명
+npm i puppeteer
+npm init
+실행 node(폴더명) 파일명.js
+
+
+
+
+
+
+
+
+
+==================PM=======================
+
+
+
+
+백엔드에 DB가 있을 필요 x
+DB가 없으면  데이터를 수정할 수 있는 권한은 x 
+
+
+sudo mysql
+
+
+=============================================
+
+jony, mynewpassword
+
+sudo mysql
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'mynewpassword';
+mynewpassword
+
+CREATE USER '유저이름'@'localhost' IDENTIFIED BY '비밀번호';
+
+GRANT ALL PRIVILEGES ON . TO '유저이름'@'localhost';
+
+CREATE USER '유저이름'@'%' IDENTIFIED BY '비밀번호';
+
+GRANT ALL PRIVILEGES ON . TO '유저이름'@'%';
+
+FLUSH PRIVILEGES;
+
+mysql -u jony -p
+
+CREATE DATABASE 디비이름 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+SHOW DATABASES;
+
+USE 디비이름;
+
+CREATE TABLE menus (
+  menu_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  menu_name VARCHAR(20) NOT NULL,
+  menu_description TEXT NOT NULL,
+  menu_img_link TEXT NOT NULL
+) default character set utf8 collate utf8_general_ci;
+
+INSERT INTO menus
+(menu_name, menu_description, menu_img_link)
+VALUES
+("아이스 아메리카노", "여름엔 아아가 진리", "/menus/ice-americano.jpg");
+
+INSERT INTO menus
+(menu_name, menu_description, menu_img_link)
+VALUES
+("카페라떼", "Latte is horse", "/menus/cafe-latte.jpg");
+
+INSERT INTO menus
+(menu_name, menu_description, menu_img_link)
+VALUES
+("복숭아 아이스티", "내 입안 복숭아향 가득", "/menus/peach-icetea.jpg");
+
+SELECT * FROM menus;
+
+exit
+
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+
+(bind-address = 0.0.0.0) carl+o -> enter -> ctrl+x
+
+sudo service mysql restart

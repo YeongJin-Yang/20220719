@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\express_start"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "node"
+	}
+}

@@ -1,0 +1,15 @@
+{"level":"error","message":"error 메세지"}
+{"level":"warn","message":"warn 메세지"}
+{"level":"info","message":"info 메세지"}
+{"level":"error","message":"error 메세지","timestamp":"2022-09-02-10"}
+{"level":"warn","message":"warn 메세지","timestamp":"2022-09-02-10"}
+{"level":"info","message":"info 메세지","timestamp":"2022-09-02-10"}
+{"level":"error","message":"error 메세지","timestamp":"2022-09-02-10:42:45"}
+{"level":"warn","message":"warn 메세지","timestamp":"2022-09-02-10:42:45"}
+{"level":"info","message":"info 메세지","timestamp":"2022-09-02-10:42:45"}
+{"level":"error","message":"error 메세지","timestamp":"2022-09-02-10:58:58"}
+{"level":"warn","message":"warn 메세지","timestamp":"2022-09-02-10:58:58"}
+{"level":"info","message":"info 메세지","timestamp":"2022-09-02-10:58:58"}
+{"level":"error","message":"error 메세지","timestamp":"2022-09-02-10:59:30"}
+{"level":"warn","message":"warn 메세지","timestamp":"2022-09-02-10:59:30"}
+{"level":"info","message":"info 메세지","timestamp":"2022-09-02-10:59:30"}

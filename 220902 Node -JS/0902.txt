@@ -1,0 +1,203 @@
+<09.02>
+터미널 하나 열어서 npm i 해주기
+
+
+에러를 정의할 줄 알아야 함.
+정상적인 접속도 내가 에러라고 정의하면 에러가 될 수 있음.
+== 에러는 개발자가 정의하는 것 !
+
+
+<winston>
+로그 만드는 기능이 익스프레스에는 없어서 설치해야함.
+
+<로그>
+dia (말로)  log (쓴다)
+해당 서비스가 동작을 할 때 무슨 일을 하는지 기록하는 것 
+
+
+비동기 통신 ==js
+
+axios -> api logs
+
+
+=============================================================
+
+string : 색깔 x
+
+j/s object(== 제이슨) : 색깔 o 
+
+
+
+=============PM=====================================================
+가져오는 것 : get
+만드는 것 : post
+
+====================================================================
+
+1.에러가 나면 터미널에 오류가 난 부분 해석하기 
+
+const express = require("express");
+
+const app = express();
+const PORT = 8080;
+
+const cors = require("cors");
+app.use(cors());
+
+const morgan = require("morgan");
+app.use(morgan("dev"));
+
+app.use(express.json());
+
+const { logger } =require("./utils/wiston");
+
+app.use(express.static(__dirname + "/views"));
+
+const fs = require("fs");
+
+const insert = (str, index, target) => {
+  const front = str.slice(0, index);
+  const back = str.slice(index, str.length);
+  return front + target + back;
+  };
+
+  let retData = {};
+
+  app.get("/api/log", async (req,res)=> {
+    res.json(retData);
+  })
+
+app.post("/api/logs", async (req, res) => {
+  logger.error("error 메세지");
+  logger.warn("warn 메세지");
+  logger.info("info 메세지");
+  logger.http("http 메세지");
+  logger.debug("debug 메세지"); 
+  
+  fs.readFile("./logs/2022-09-02-14.log","utf8",(err,data)=>{
+    retData = data;
+    let idx = -1;
+    while (1) {
+    idx = retData.indexOf("}", idx + 1);
+    if (idx === -1)  {
+    break;
+    }
+    retData = insert(retData, idx + 1, ",");
+    }
+    retData = "[" + retData.slice(0, retData.length - 3) + "]";
+    retData = JSON.parse(retData);
+    //console.log(retData);
+    });
+    
+
+  return res.json({
+    test: "OK",
+  });
+});
+
+app.listen(PORT, () => console.log(`this server listening on ${PORT}`));
+
+============================
+
+<----------------->
+1) mysql -u jony -p
+
+2) show databases;
+
+3) use jony
+
+4) show tables;
+
+5) drop table menus;
+
+6) show tables;
+
+7)  MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+CREATE SCHEMA IF NOT EXISTS `order_system` DEFAULT CHARACTER SET utf8mb4 ;
+
+USE `order_system` ;
+
+-- -----------------------------------------------------
+-- Table `order_system`.`menus`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `order_system`.`menus` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(200) NULL,
+  `description` VARCHAR(200) NULL,
+  `image_src` VARCHAR(200) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `order_system`.`orders`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `order_system`.`orders` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `quantity` INT NULL,
+  `request_detail` VARCHAR(200) NULL,
+  `menus_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `menus_id`),
+  CONSTRAINT `fk_orders_menus`
+    FOREIGN KEY (`menus_id`)
+    REFERENCES `order_system`.`menus` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+mynewpassword
+
+8) show tables;
+
+9) use order_system
+
+10) show tables;
+
+11) desc menus;
+
+auto_increment -> 
+(중복이 되었을 때 발생하는 문제를 피하고자 사용)
+
+12) desc orders;
+
+[중요]
+테이블을 나눠야 하는 이유
+용량의 낭비 ( null값이 많으면)  null값, 중복값이 안나오도록 해야함.
+
+
+13) C:\Users\multicampus\Desktop\express-starting-template>npm i multer mysql2
+
+[좋은 API 설계하기]
+
+DB에 대한 접근은 PK에 요청할 수 있도록 하기 (가장 빠르기 때문)
+
+1. 다 가져오기
+GET/api/menus
+2. 하나만 가져오기
+GET/api/menus/:id
+3. 추가하기
+POST/api/menus (무조건 바디로 주기)
+4. id(PK)에 해당하는거 수정하기 
+PATCH/api/menus (/:id)
+5. id에 해당하는거 삭제하기
+DELETE/api/menus (/:id)
+
+{
+"id": 1,
+"name": "아이스 아메리카노",
+"quantity": 1,
+“request_detail": "뜨겁게 만들어주세요"
+}
+
+
+
