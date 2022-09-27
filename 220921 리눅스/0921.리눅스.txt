@@ -1,0 +1,276 @@
+<22 09 21>
+
+명령어를 쓴다 ,프로그램을 만든다 => 파일을 만든다 !
+
+
+vi now.c
+
+gcc now.c -o now
+
+ls
+
+
+yeongjin@yeongjin-VirtualBox:~$ sudo mv now /usr/bin
+[sudo] yeongjin 암호: 
+yeongjin@yeongjin-VirtualBox:~$ now
+yeongjin
+yeongjin-VirtualBox
+sh: 1: uptime-p: not found
+yeongjin@yeongjin-VirtualBox:~$ vi now.c
+yeongjin@yeongjin-VirtualBox:~$ gcc now.c -o now
+yeongjin@yeongjin-VirtualBox:~$ now
+yeongjin
+yeongjin-VirtualBox
+sh: 1: uptime-p: not found
+yeongjin@yeongjin-VirtualBox:~$ now
+yeongjin
+yeongjin-VirtualBox
+sh: 1: uptime-p: not found
+yeongjin@yeongjin-VirtualBox:~$ ls
+bts.txt  now.c  test.c  공개      문서      비디오  음악
+now      test   test2   다운로드  바탕화면  사진    템플릿
+yeongjin@yeongjin-VirtualBox:~$ ./now
+yeongjin
+yeongjin-VirtualBox
+up 35 minutes
+yeongjin@yeongjin-VirtualBox:~$ now
+yeongjin
+yeongjin-VirtualBox
+sh: 1: uptime-p: not found
+yeongjin@yeongjin-VirtualBox:~$ sudo mv now /usr/bin
+yeongjin@yeongjin-VirtualBox:~$ now
+yeongjin
+yeongjin-VirtualBox
+up 36 minutes
+yeongjin@yeongjin-VirtualBox:~$ cd test2
+yeongjin@yeongjin-VirtualBox:~/test2$ now
+yeongjin
+yeongjin-VirtualBox
+up 38 minutes
+yeongjin@yeongjin-VirtualBox:~/test2$ ./now
+bash: ./now: 그런 파일이나 디렉터리가 없습니다
+yeongjin@yeongjin-VirtualBox:~/test2$ 
+
+=======================================
+디렉토리 or 파일 용량 확인
+du –sh ./test 
+
+========================================
+
+<압축하기>
+ 
+tar(파일을 묶는 용도) + xz(파일을 압축하는 용도 => 1개 파일밖에 압축 못함)  [압축율이 높으나 속도가 느림]
+
+1) 압축하기
+$ tar -Jcvf 파일명.tar.xz ./*
+2) 압축 풀 디렉터리 만들기
+$ mkdir ./test
+3) 압축풀기
+$ tar -Jxvf 파일명.tar.xz -C ./test
+
+===========================================
+
+<I'm Green, I'm yellow 출력>
+
+yeongjin@yeongjin-VirtualBox:~$ cd bluepink
+yeongjin@yeongjin-VirtualBox:~/bluepink$ vi green.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  blue.c  green.c  main.c  pink.c  yellow.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ vi green.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ gcc -c green.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ gcc -c yellow.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls -al
+합계 40
+drwxrwxr-x  2 yeongjin yeongjin 4096  9월 21 11:33 .
+drwxr-xr-x 22 yeongjin yeongjin 4096  9월 21 11:32 ..
+-rw-rw-r--  1 yeongjin yeongjin  162  9월 21 11:19 Makefile
+-rw-rw-r--  1 yeongjin yeongjin   63  9월 21 11:19 blue.c
+-rw-rw-r--  1 yeongjin yeongjin   98  9월 21 11:19 green.c
+-rw-rw-r--  1 yeongjin yeongjin 1744  9월 21 11:33 green.o
+-rw-rw-r--  1 yeongjin yeongjin   81  9월 21 11:19 main.c
+-rw-rw-r--  1 yeongjin yeongjin   63  9월 21 11:19 pink.c
+-rw-rw-r--  1 yeongjin yeongjin   63  9월 21 11:19 yellow.c
+-rw-rw-r--  1 yeongjin yeongjin 1680  9월 21 11:33 yellow.o
+yeongjin@yeongjin-VirtualBox:~/bluepink$ gcc yellow.o green.o -o result
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  blue.c  green.c  green.o  main.c  pink.c  result  yellow.c  yellow.o
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ./result
+I'm Green
+I'm yellow
+yeongjin@yeongjin-VirtualBox:~/bluepink$ result
+result: 명령을 찾을 수 없습니다
+yeongjin@yeongjin-VirtualBox:~/bluepink$ rm *.o result
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  blue.c  green.c  main.c  pink.c  yellow.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ 
+
+================================================
+
+<I'm blue, I'm pink출력>
+
+yeongjin@yeongjin-VirtualBox:~/bluepink$ rm *.o result
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  blue.c  green.c  main.c  pink.c  yellow.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ rm  green.c yellow.c 
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  blue.c  main.c  pink.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ gcc -c blue.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ gcc -c pink.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ gcc -c main.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  blue.c  blue.o  main.c  main.o  pink.c  pink.o
+yeongjin@yeongjin-VirtualBox:~/bluepink$ gcc main.o pink.o blue.o -o result
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ./result
+I'm blue
+I'm pink
+yeongjin@yeongjin-VirtualBox:~/bluepink$ vi main.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  blue.c  blue.o  main.c  main.o  pink.c  pink.o  result
+yeongjin@yeongjin-VirtualBox:~/bluepink$ rm *.o
+yeongjin@yeongjin-VirtualBox:~/bluepink$ rm result
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  blue.c  main.c  pink.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ gcc ./*.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ls
+Makefile  a.out  blue.c  main.c  pink.c
+yeongjin@yeongjin-VirtualBox:~/bluepink$ ./a.out
+I'm blue
+I'm pink
+yeongjin@yeongjin-VirtualBox:~/bluepink$ 
+
+
+
+
+====================================================================
+ 1 bluepink: blue.o pink.o main.o                           (bluepink) make로 하고자 하는 것은 맨 위에 있어야함 
+  2     gcc blue.o pink.o main.o -o bluepink             
+  3 
+  4 blue.o: blue.c
+  5     gcc -c blue.c
+  6 
+  7 pink.o: pink.c
+  8     gcc -c pink.c
+  9 
+ 10 main.o: main.c
+ 11     gcc -c main.c
+~                                                                               
+~                                
+
+ 
+gcc는 뭘 수정했는지 판단해주지 않기 때문에 빌드가 느리다.
+그래서 make가 짱짱맨임
+
+
+===========<PM>================================================
+
+go : 타겟 $@
+go hi : $^
+
+
+---------Makefile---------------------------------------------
+  1 CC = gcc
+  2 OBJS = test1.o test2.o test3.o
+  3 
+  4 result: $(OBJS)
+  5     $(CC) -o result $(OBJS)                                   o : object                         test1.o test2.0 test3.0 gcc -o
+  6 
+  7 test1.o: test1.c a.h b.h                                                                                ./result 
+  8     $(CC) -c test1.c
+  9 test2.o: test2.c a.h c.h
+ 10     $(CC) -c test2.c                                           c: complie(컴파일 하면 ) object파일이 만들어짐 
+						컴파일을 하면 test1.c -> test1.o
+ 11 test3.o: test3.c a.h b.h c.h
+ 12     $(CC) -c test3.c
+ 13 
+ 14 clean:
+ 15     rm $(OBJS) result
+~                           
+
+------------- a.h-----------------------------------------------------
+   #include <stdio.h>
+
+------------- b.h-----------------------------------------------------
+  1 #define N1 11 (11을 N1로 쓰는거)
+
+------------- c.h-----------------------------------------------------
+  1 #define N2 22 (22을 N2로 쓰는거)
+
+
+-------------test1.c---------------------------------------------------
+  1 #include "a.h"
+  2 #include "b.h"
+  3 
+  4 void func1();
+  5 void func2();
+  6 
+  7 int main()
+  8 {
+  9     int n = N1;
+ 10     printf("TEST1: %d\n", n);
+ 11 
+ 12     func1();
+ 13     func2();
+ 14 
+ 15     return 0;
+ 16 }
+
+
+-------------test2.c---------------------------------------------------
+  1 #include "a.h"
+  2 #include "c.h"
+  3 
+  4 void func1()
+  5 {
+  6     int n = N2;
+  7     printf("TEST2: %d\n", n);
+  8 }
+~      
+
+-------------test3.c---------------------------------------------------
+  1 #include "a.h"
+  2 #include "b.h"
+  3 #include "c.h"
+  4 
+  5 void func2()
+  6 {
+  7     int n = N1 + N2;
+  8     printf("TEST3: %d\n", n);
+  9 }
+~         
+
+=================================================================
+
+
+관리자는 sudo명령어를 쓸 수 있는 사람 
+
+root 계정 ???????
+
+$ sudo su	
+$ su jonny
+
+$  suodo apt install == #  apt install
+
+임베디드 환경에서는 sudo가 필요없음 root밖에 안씁니다
+
+---- ctrl + c : 실행종료 
+
+
+localhost : 127.0.0.1 안으로 쏴서 루프를 타게 돼 .. 아무 의미 없는 명령
+ping : 10.0.2.15 바깥으로 쏴서 찾아봤는데 알고보니까 내꺼임
+
+방화벽이 닫혀있을때 localhost는 작동하지만 ping은 작동 x! 
+
+Root에 패스워드 지정하면 안됨 
+
+
+
+=======================================================================
+
+644 (이진수 변환)
+
+110 100 100
+rw-  r--  r--  (rwx rwx rwx)
+
+
+
+

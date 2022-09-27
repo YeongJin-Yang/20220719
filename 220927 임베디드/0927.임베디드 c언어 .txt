@@ -1,0 +1,242 @@
+
+Set : 비트를 1로 바꿈
+1번 비트 set하기 : a1set = (0x1 << 1) | a;
+
+
+Clear : 비트를 0으로 바꿈 
+2번 bit, clear 하기 : a2clr = a & ~(1 << 2)
+
+==================================================
+
+#include <stdio.h>
+
+1<<2 = 100 
+1<<7 = 10000000
+
+int main()
+{
+    unsigned char a = 0b11110101;
+
+    unsigned char msb;
+    unsigned char lsb;
+    unsigned char msb_lsb;
+
+    msb = (a>>7) & 0x01;
+    lsb = (a>>0) & 0x01;
+
+    msb_lsb = ((a>>7)<<0x01) | ((a>>0) & 0x01);
+    				10(2)			1(2)		
+    printf("%x\n", msb);
+    printf("%x\n", lsb);
+    printf("%x\n", msb_lsb);
+
+    return 0;
+}
+
+==================================================
+
+0x7     =  0000 0000 0000 0111
+0x0111 = 0000 0001 0001 0001 
+
+
+
+
+   100
+
+
+======================================================	
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	char input[10] = "0x38A5";
+
+	int result = strtol(input,NULL,16);
+
+
+	printf("%d\n", result);
+
+	return 0;
+}
+
+110(2) 6
+101(2) 5
+
+001(2)
+
+=========================================================
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+	int a =100;
+	char buf[10];
+
+	sprintf(buf, "%X", a);
+
+	printf("%X",a);
+
+	return 0;
+
+}
+
+============================================================
+
+/ 몫 % 나머지
+
+
+1)  a & 1
+2)  ~a & 1
+3)  a<<k; 
+4) 몫 = a>>k, 나머지 = a ? ((1 ? k) - 1);
+5) a = a ^ b, b = a ^ b, a = a ^ b;
+6) result = (a >>	k) & 1;
+
+
+============================================================
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+	int a = 17;
+	char buf[10] = {0} ;
+	int bn = 0;
+
+
+	for (int i = 17; i !=0; i = i/2)
+	{
+		buf[bn++] = (i%2) + '0'	;
+	}
+
+	for (int i = strlen(buf) - 1; i >=0; i--)
+	{
+		printf("%c",buf[i]);
+	}
+
+	return 0;
+}
+
+
+================================================================
+<PM>
+
+
+
+보수 : 숫자를 뒤집고, 1 더한 수
+
+2바이트 형 : 0000 0000 0000 0111; 7
+0b 1111 1111 1111 1001; 
+
+1바이트(8비트) 캐릭터형 : 0000 0111; 7
+0b 1111 1001 ;
+
+char a = 7 ===> 0000 0111
+char a = -7 -----> 1111 1001
+
+char a = unsigned char a 
+
+
+================================================================
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main()
+{
+	char vect[10] = "ABCDEFGH";
+	char temp[10] = " ";
+	char arr[10] = "ABC";
+
+	printf("%d\n", strlen(vect));
+	printf("%d\n", strlen(&vect[0]));
+	printf("%d\n", strlen(&vect[2]));
+	printf("%d\n", strlen(vect+2));
+
+	//strncpy : 문자열 일부분을 출력하는 함수
+	strncpy(temp, vect,3);
+	printf("%s\n",temp);
+
+	//strcat : 문자열 합치는 함수
+	strcat(vect,arr);
+	printf("%s\n",vect);
+
+}
+
+
+==================================================================
+
+
+//int main()
+//{
+//	char vect[30] = "[152.123459] message 24";
+//
+//	float time;
+//	char msg[30];
+//	int num;
+//
+//	sscanf(vect, "[%f]%s%d", &time, &msg, &num);
+//
+//
+//	return 0;
+//}
+
+==================================================================
+
+
+//int main()
+//{
+//	char vect[10] = "ABCDFG" ;
+//
+//	printf("%s ", strstr(vect, "BCD"));
+////	printf("%s ", strchr(vect, 'C'));
+//
+//}
+
+
+=====================================================
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+
+int main()
+{
+	char vect[100] = "DBABCEQABC";
+	char tar[4] = "ABC";
+
+	int tn = strlen(tar);
+		//3
+
+	while (1)
+	{
+		char* p = strstr(vect, tar);
+			//ABCEQABC
+
+		if (p == NULL) break;
+		strcpy(p, p + tn);
+		   // ABCEQABC ,EQABC
+
+	}
+
+	printf("%s",p);
+
+	return 0;
+}
+
+
+==========================================================
+
+
+
+
+

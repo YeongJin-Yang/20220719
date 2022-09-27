@@ -1,0 +1,250 @@
+<09.23>
+
+ctrl + shit +- 글자 크기 줄이고 늘리고 
+
+=============================================
+
+#include <stdio.h>
+
+int main()
+{
+	int a = 512;
+	char b = 'E';
+
+	int arr[3] ={1,4,3};
+
+	printf("%X \n", &a);
+	printf("%X \n", &b);
+	printf("%X \n", &arr);
+
+	return 0;
+}
+
+
+==============================================
+
+#include <stdio.h>
+
+int main()
+{
+	int a = 512;
+
+	printf("%X \n", &a);
+	printf("%X \n", &a+1);
+	printf("%X \n", &a+2);
+
+	return 0;
+}
+
+
+==============================================
+
+#include <stdio.h>
+
+int main()
+{
+	int x = 100;
+	int *p = &x;
+	int *g = &x;
+
+	*p =5000;
+
+	printf("%d", *g);
+
+	return 0;
+
+================================================
+
+#include <stdio.h>
+
+int main()
+{
+	int a =100;
+	int b =100;
+
+	int *rr = &a;
+	int *pp = &a;
+	int *gg = &b;
+
+	int c = (*rr)*(*pp)*(*gg);
+
+	printf("%d",c);
+
+	return 0;
+}
+================================================
+
+- 주소 연산자(&)
+  주소 연산자는 변수의 이름 앞에 사용하여, 해당 변수의 주소값을 반환
+
+- 참조 연산자(*)
+  참조 연산자는 포인터의 이름이나 주소 앞에 사용하여, 포인터에 가리키는 주소에 저장된 값
+
+- 타입* 포인터이름 = &변수이름;  or  타입* 포인터이름 = 주소값;
+
+int *ptr = &x;    // 포인터의 선언
+
+
+p = arr[0]    x
+p = &arr[0]  o
+p = arr       x
+
+p[2] = *(p+2) (포인터 줄임식)
+
+===============================================
+
+#include <stdio.h>
+
+int main()
+{
+	int arr[5] = {1,5,3,2,6};
+	int *p;
+
+	p = arr;
+
+	printf("%d\n", *(p+4));
+	printf("%d\n", *(p)+1);
+
+}
+
+======================================================
+
+
+#include <stdio.h>
+
+int main()
+{
+	int arr[5] = {11,15,13,12,16};
+	int *p;
+	int sum =0;
+
+	p = arr;
+
+	for (int i= 0; i<5; i++)
+	{
+		sum += *(p+i);
+	}
+
+	printf("%d\n", sum);
+
+}
+
+=======================================================
+
+<PM>
+
+arr = arr[0] = &arr[0]
+
+
+=========================================================
+
+
+#include <stdio.h>
+
+
+int main()
+{
+
+int arr[2][3] = {
+		{1, 2, 3},
+		{6, 7, 8}
+};
+
+int *p = arr;
+
+for (int i =5; i>=0; i--)
+{
+	printf("%d", p[i]);
+}
+
+
+return 0;
+
+}
+
+===============================================================
+
+#include <stdio.h>
+
+int main()
+{
+
+
+
+	const char *p= "ABC";
+
+	for(int i=0; i<3; i++)
+		printf("%c\n",p[i]);
+
+
+return 0;
+}
+
+=================================================================
+
+#include <stdio.h>
+
+
+int main()
+{
+
+	char vs[3][6] = { "ABCDE", "BTS", "KK"};
+
+	printf("%s\n", *vs);
+	printf("%s\n", *vs+1);
+	printf("%s\n", *(vs)+1);
+	printf("%s\n", *(vs+1));
+
+	return 0;
+}
+
+
+=====================================================================
+[과제]
+1)
+#include <stdio.h>
+
+
+void kfc(char *ts[2]) {
+	for (int i=0; i<2; i++)
+	{
+		printf("%s\n",*(ts+i));
+	}
+}
+
+
+int main()
+{
+
+	const char *ts[2] = {"KFC WORLD", "DAVID"};
+
+	kfc(ts);
+
+	return 0;
+}
+
+2)
+#include <stdio.h>
+
+
+int main()
+{
+
+	char arr[2][10] = {"KFC WORLD", "DAVID"};
+
+	char *p[2] = {arr[0], arr[1]};
+
+	for (int i=0; i<2; i++)
+		{
+			printf("%s\n",p[i]);
+		}
+
+
+
+	return 0;
+}
+=======================================================
+
+
+
+
