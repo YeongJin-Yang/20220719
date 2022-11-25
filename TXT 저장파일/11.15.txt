@@ -1,0 +1,15 @@
+bind_address 192.168.26.54
+allow_anonymous true
+
+
+====================================
+
+192.168.26.54
+
+mosquitto -c mosquitto.conf -v : mosquitto broker
+
+mosquitto_sub -h 192.168.26.54 -t “home/pi”
+
+mosquitto_pub -h 192.168.26.54 -t “home/pi” -m 1
+
+

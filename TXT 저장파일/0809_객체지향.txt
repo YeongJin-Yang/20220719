@@ -1,0 +1,229 @@
+객체지향
+
+
+# class 쓸 때
+class Ex {
+	constructor(name, age){  // 생성자(Ex class에서 쓸 수 있는 변수 생성&초기화)
+		this.age;
+		this.name;
+	}	
+	run( ){
+		this.age +=10;
+	}
+}
+
+const ch = new Ex("jony", 40);
+ch.run();
+
+
+# 상속 받기 (위에 코드 Ex 가져오기)
+class Ex2 extends Ex{
+	constructor(hp, mp){  // 생성자(Ex class에서 쓸 수 있는 변수 생성&초기화)
+		super(age);  // 부모클래스에서 가져오기
+		this.mp;
+	}
+	f(){
+		console.log("f");
+	}
+}
+
+const ch2 = new Ex2();
+
+ch2.f();
+ch2.run(); // Ex2에는 run이 없는데도 사용 가능하지 왜 ? 상속 받았으니께
+
+
+# class 왜 씀 ?
+객체 하나 만들고 쓰면 그거 변하니까
+자주 쓰는 거 하나 만들어 놓고 그걸로 여러개 만들어서 쓰는거지 
+아시죠 ?
+
+
+# 객체지향(OOP)
+추상화 (Abstracton)
+- class 만들기
+캡슐화 (Encapsulation)
+상속 (Inheritance)
+- 재사용성 용이
+다형성 (Polymorphism)
+
+
+# 코드
+ class Hero {
+  constructor(hp) {
+    this.hp = hp;
+  }
+  walk() {
+    console.log("조금 빠르게 걷기");
+  }
+  run() {
+    this.hp = this.hp - 10;
+  }
+}
+
+class SuperMan extends Hero {
+  constructor(hp, mp) {
+    super(hp);
+    this.mp = mp;
+  }
+  walk() {
+    super.walk();
+    console.log("완전 빠르게 걷기");
+  }
+  fly() {
+    console.log("fly");
+    console.log(this.hp);
+  }
+}
+
+const superman = new SuperMan(100, 100);
+
+superman.run();
+superman.walk();
+superman.fly();
+
+ 
+# for each some 뭐시기
+
+
+# 함수
+재사용 가능한 기능 
+
+# 콜백함수
+함수의 파라미터로 들어가는 함수
+왜 들어감 ? 함수를 저장해둘라고
+
+// 코드
+const say = () =>"Hi";
+
+sampleFunc(say());  // 이거랑
+sampleFunc("Hi");  // 이거랑 같은 거
+
+sampleFunc(say);  // 이건 다른 거 함수 자체가 들어가는거
+
+
+// 2초 뒤에 출력
+setTimeout(() => {
+	console.log("hi");
+}, 2000);
+
+
+# forEach
+const nums = [1, 5, 4, 2, 6];
+nums.forEach((num) => console.log(num));
+// 이렇게하면 하나씩 다 출력 됨
+
+console.log(nums,findIndex((num) => num > 4);
+// 4보다 큰 애의 인덱스를 출력
+
+
+
+# 그건 좀 ...
+const nums = [1, 2, 3, 4, 5];
+
+// 수 더하기
+// const sum = nums.reduce((acc, cur) => {
+//   console.log("acc", acc);
+//   console.log("cur", cur);
+//   return acc + cur;
+// });
+// console.log(sum);
+
+// 축약
+// const sum = nums.reduce((acc, cur) => acc + cur);
+// console.log(sum);
+
+// 초기값이 있을 때
+// const newNums = nums.reduce((acc, cur) => {
+//   console.log("acc", acc);
+//   console.log("cur", cur);
+//   acc.push(cur + 1);
+//   return acc;
+// }, []);
+// console.log(newNums);
+
+// 응용
+// const arr = ["피카츄", "라이츄", "파이리", "꼬부기", "피카츄", "파이리"];
+// const result = arr.reduce((acc, cur) => {
+//   if (acc[cur]) {
+//     acc[cur] = acc[cur] + 1;
+//   } else {
+//     acc[cur] = 1;
+//   }
+//   return acc;
+// }, {});
+// console.log(result);
+
+
+# reduce 이용해서 3이상 출력하기
+객체 [ ]로 접근
+const nums = [1, 2, 3, 4, 5];
+
+nums.reduce((acc, cur) => {
+  if(cur > 3){
+    acc.push(cur)
+  }
+  return acc;
+}, [ ] )
+
+
+# JS에서 빈 배열과 빈 객체는 True 입니다 
+[ ], { } 
+객체끼리 비교 불가능 const a = { name: "jony"; } 이런 애들
+if(a === b) 비교 안됨 ㅇㅅㅇ;;
+배열도 안됨 > 지원 안해준대 나쁜놈
+
+
+# 비동기
+
+# 1 HTML 파일
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.27.2/dist/axios.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
+
+# 2 JS파일
+const URL = "https://jsonplaceholder.typicode.com/todos/";
+
+const getData = async () => {
+  try {
+    const response = await axios.get(URL);
+    console.log(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getData();
+
+
+
+# 동기 & 비동기
+동기는 받아야 다음으로 넘어가는데
+비동기는 늦어질 것 같으면 기다리지 않고 다음으로 넘어감
+
+자바 스크립트는 멀티쓰레드를 지원하지 않음
+빨라서 동시에 하는 것 처럼 느끼는 것 뿐
+
+
+
+
+
+
+
+
+
+
+
+
+
+

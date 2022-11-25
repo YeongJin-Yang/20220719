@@ -1,0 +1,47 @@
+	
+====================<AM>===============================
+
+디바이스 드라이버의 동작원리를 알아야함.
+
+Application --- Device Files --- Device Driver --- HW 
+   M영역              ( 커널              커널 )
+
+1. aliash.sh
+
+2. app.c --> Application --> System call(read write close) 
+application은 메모리에 직접 접근을 할 수 없기에 system call을 통해서 부탁을 해야함.
+system call을 받았을 때 어떤 일을 해야할까 정의를 nobrand.c에 해놓음.
+
+3. Makefile 	
+
+4. nobrand.c --> Device Driver --> 메모리에 접근이 가능(커널 영역이니까)
+
+Device Files -- > 
+
+
+
+
+
+sudo mknod /dev/nobrand c 100 0
+
+sudo chmod 666 /dev/nobrand
+
+
+$ sudo insmod ./nobrand.ko
+이 순간, 커널에서 디바이스 드라이버를 "모듈" 로 관리 시작
+$ ./app
+애플리케이션 프로그램 실행
+당연히, 디바이스 파일과 디바이스 드라이버가 없으면 에러
+$ sudo rmmod nobrand
+커널이 관리중인 nobrand 를 메모리에서 할당해제
+$ dmesg -w
+커널로그 모니터링
+
+open( )
+close( )
+read( ) ,write( )는 정의하기 나름이라서, 쓰는게 의미가 없다.
+그러니까 디바이스 드라이버 본질에 더 맞는 함수를 쓰도록 하자 !
+=> 그 결론이 ioctl
+
+====================<PM>===============================
+
